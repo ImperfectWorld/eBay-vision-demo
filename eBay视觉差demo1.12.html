@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视觉差demo</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		ul {
+			list-style: none;
+		}
+
+		.info{
+			position: relative;
+			height: 750px;
+			width: 100%;
+			margin: 0 auto;
+		}
+		.index{
+			min-height: 900px;
+		}
+		.footer{
+			min-height: 400px;
+		}
+		.box{
+			position: relative;
+			margin: 0 auto;
+			height: 400px;
+			width: 100%;
+
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;
+
+			box-shadow: 0 7px 18px #323131 inset,0 -7px 18px #323131 inset;
+			-webkit-box-shadow: 0 7px 18px #323131 inset,0 -7px 18px #323131 inset;
+			-moz-box-shadow: 0 7px 18px #323131 inset,0 -7px 18px #323131 inset;
+			border-radius: 5px;
+		}
+		.box-1{background-image: url("images/back_img1.jpg");}
+		.box-2{background-image: url("images/back_img2.jpg");}
+		.box-3{background-image: url("images/back_img3.jpg");}
+
+		.header{
+			width: 1000px;
+			margin: 0 auto;
+		}
+
+		.logo{
+			background-image: url('http://pics.ebaystatic.com/aw/pics/announcements/new/feed/logo.jpg');
+
+			width: 1000px;
+			height: 190px;
+			margin: 0 auto;
+
+			display: block;
+			overflow: hidden;
+			text-decoration: none;
+			text-indent: -9999px;
+		}
+		.header span{
+			position: absolute;
+			display: block;
+			top: 25px;
+			font-size: 26px;
+			font-family: "Univers LT W01 45 Light",Arial,sans-serif;
+		}
+		.content{
+			background: url("images/index_img.jpg") no-repeat;
+
+			height: 715px;
+			width: 1000px;
+		}
+		.content_text{
+			position: relative;
+			width: 410px;
+			height: 300px;
+			top: 180px;
+			left: 578px;
+		}
+		.content_text h2{
+			font-family: "Univers LT W01 45 Light",Arial,sans-serif;
+			font-size: 26px;
+			color: #333;
+			line-height: 1.4;
+			font-style: normal;
+			font-weight: normal;
+			text-transform: none;
+			margin-bottom: 30px;
+		}
+		.content_text li{
+			font-family: "Univers LT W01 45 Light",Arial,sans-serif;
+			font-size: 16px;
+			color: #333;
+			line-height: 2;
+			margin-bottom: 20px;
+			margin-left: 40px;
+
+			list-style: disc;
+		}
+		#slideshow{
+			position: relative;
+			width: 1000px;
+			margin: 0 auto;
+			padding: 35px 0 28px;
+		}
+		#slideshow h1{
+			font-family: "Univers LT W01 45 Light",Arial,sans-serif;
+			font-size: 26px;
+			letter-spacing: -0.04em;
+			text-transform: uppercase;
+			font-style: normal;
+			font-weight: normal;
+			color: #5d5d5d;
+			margin: 0 0 10px
+		}
+		.gallery{
+			position: relative;
+			height: 700px;
+			width: 1000px;
+			margin: 0 auto;
+			overflow: hidden;
+
+			padding-top: 30px;
+		}
+		.gallery .gmask{
+			position: absolute;
+			top: 100px;
+			left: 0;
+			width: 4000px;
+			overflow: hidden;
+
+			margin: 0 50px;
+		}
+		.gallery .gmask li{
+			width: 1000px;
+			float: left;
+		}
+		.gmask li img{
+			width: 900px;
+		}
+
+		.btn-prev{
+			position: absolute;
+			left: 0;
+			top: 50%;
+			margin: -44px 0 0;
+			background: url("images/btn-prev-next.png") no-repeat 0 -220px;
+			width: 31px;
+			height: 53px;
+
+			text-indent: -9999px;
+			z-index: 5;
+		}
+		.btn-next{
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			margin: -44px 0 0;
+			background: url("images/btn-prev-next.png") no-repeat 0 -320px;
+			width: 31px;
+			height: 53px;
+
+			text-indent: -9999px;
+			z-index: 5;
+
+		}
+
+		.btn-round{
+			position: absolute;
+			bottom: 80px;
+			left: 50%; 
+			height: 10px;
+			text-align: center;
+			margin-left: -45px;
+		}
+		.btn-round span{
+
+			display: inline-block;
+			padding: 0 10px 0 5px;
+
+			background-color: #e3e3e3;
+		}
+		.btn-round span a{
+			position: absolute;
+			width: 10px;
+			height: 10px;
+			border-radius: 10px;
+			overflow: hidden;
+
+			display: block;
+			text-indent: -9999px;
+			text-decoration: none;
+
+			background-color: #e3e3e3;
+		}
+		.btn-round span a:hover{
+			background-color: #f8e185;
+		}
+		.btn-round .active{
+			background-color: #f8e185;
+		}
+
+		/*footer*/
+		.start{
+			position: absolute;
+			overflow: hidden;
+			width: 100%;
+			height: 657px;
+			z-index: 10;
+			background-image:-webkit-linear-gradient(to bottom, #fff, #fdb8bb);
+			background-image:linear-gradient(to bottom,#fff, #fdb8bb);
+		}
+		.start .light-wrap{
+			position: relative;
+			margin-top: -222px;
+			display: block;
+			height: 665px;
+			width: 100%;
+		}
+		.start .light1{
+			background: url("images/light1.png") no-repeat scroll center 0 rgba(0,0,0,0);
+			height: 660px;
+			position: absolute;
+			width: 100%;
+			z-index: 11;
+		}
+		.start .light2{
+			background: url("images/light1.png") no-repeat scroll center -666px rgba(0,0,0,0);
+			height: 660px;
+			position: absolute;
+			width: 100%;
+			z-index: 12;
+		}
+		.start .light3{
+			background: url("images/light1.png") no-repeat scroll center -1334px rgba(0,0,0,0);
+			height: 660px;
+			position: absolute;
+			width: 100%;
+			z-index: 13;
+		}
+		.start .light-focus{
+			border-radius: 50%;
+			height: 300px;
+			left: 50%;
+			margin-left: -150px;
+			position: absolute;
+			top: 362px;
+			width: 300px;
+			z-index: 14;
+		}
+		.light-focus .goods-num{
+			color: #f0320c;
+			display: none;
+			font-size: 40px;
+			font-weight: 700;
+			margin: 46px 0 0 140px;
+		}
+		.light-focus-inner{
+			-webkit-animation-duration: 1s;
+			animation-duration: 1s;
+			background: url("images/light1.png") no-repeat scroll 0 -1995px rgba(0, 0, 0, 0);
+			border-radius: 50%;
+			height: 300px;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 300px;
+		}
+		.light-focus-hover{
+			background: url("images/light1.png") no-repeat scroll -305px -1995px rgba(0, 0, 0, 0);
+		}
+		.start .light-focus-hover .goods-num{
+			display: inline-block;
+		}
+
+		@-webkit-keyframes flipInY {
+			0% {
+			    -webkit-transform: perspective(600px) rotateY(90deg);
+			}
+			40% {
+			    -webkit-transform: perspective(600px) rotateY(-10deg);
+			}
+			70% {
+			    -webkit-transform: perspective(600px) rotateY(10deg);
+			}
+			100% {
+			    -webkit-transform: perspective(600px) rotateY(0deg);
+			}
+		}
+		@keyframes flipInY {
+			0% {
+			    transform: perspective(600px) rotateY(90deg);
+			}
+			40% {
+			    transform: perspective(600px) rotateY(-10deg);
+			}
+			70% {
+			    transform: perspective(600px) rotateY(10deg);
+			}
+			100% {
+			    transform: perspective(600px) rotateY(0deg);
+			}
+		}
+		.flipInY {
+			-webkit-animation-name: flipInY;
+		    -webkit-backface-visibility: visible !important;
+		    animation-name: flipInY;
+		    backface-visibility: visible !important
+		}
+
+		@-webkit-keyframes flipOutY{
+			0% {
+			    -webkit-transform: perspective(600px) rotateY(-90deg);
+			}
+			40% {
+			    -webkit-transform: perspective(600px) rotateY(10deg);
+			}
+			70% {
+			    -webkit-transform: perspective(600px) rotateY(-10deg);
+			}
+			100% {
+			    -webkit-transform: perspective(600px) rotateY(0deg);
+			}
+		}
+		@keyframes flipOutY{
+			0% {
+			    transform: perspective(600px) rotateY(-90deg);
+			}
+			40% {
+			    transform: perspective(600px) rotateY(10deg);
+			}
+			70% {
+			    transform: perspective(600px) rotateY(-10deg);
+			}
+			100% {
+			    transform: perspective(600px) rotateY(0deg);
+			}
+		}
+
+		.flipOutY{
+			-webkit-animation-name: flipOutY;
+			-webkit-backface-visibility: visible !important;
+			animation-name: flipOutY;
+			backface-visibility: visible !important;
+		}
+
+	</style>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+	window.onload = function () {
+
+		//支持逻辑对象
+		var lee_support = {
+
+			getElementsByClassName : function (clsn,context) {
+				context = context || document;
+
+				if (context.getElementsByClassName) {
+					return context.getElementsByClassName(clsn);
+				} else {
+					var nodes = context.getElementsByTagName("*"),
+						rets = [];
+						for (var i = 0; i < nodes.length; i++) {
+							if(nodes[i].className == clsn) {
+								rets.push(nodes[i]);
+							}
+						}
+					return rets;		
+				}
+			},
+
+			indexNum : function (current, obj) { 
+				for (var i = 0; i < obj.length; i++) { 
+					if (obj[i] == current) { 
+					return i; 
+					} 
+				} 
+			} 
+		}
+		
+		var lee_screen = {
+			
+			winWidth : function () {
+				if (window.innerWidth) {
+					return window.innerWidth;
+				}
+				else if ((document.body) && (document.body.clientWidth)) {
+					return document.body.clientWidth;
+				};
+			},
+			winHeight : function () {
+				if (window.innerHeight) {
+				return window.innerHeight;
+				}	
+				else if ((document.body) && (document.body.clientHeight)) {
+					return document.body.clientHeight;
+				}
+			}
+		}
+
+		// console.log(lee_screen.winWidth());
+		var _int = (function () {
+			oIndex = document.getElementsByClassName("index");
+			oFooter = document.getElementsByClassName("footer");
+			oBox = document.getElementsByClassName("box");
+
+			oIndex[0].style.height = lee_screen.winHeight() + "px";
+			oFooter[0].style.height = lee_screen.winHeight() - oBox[0].offsetHeight + "px";
+		})();
+
+		var i = {
+			btnPrev : document.getElementsByClassName('btn-prev'),
+			btnNext : document.getElementsByClassName('btn-next'),
+			slide : document.getElementsByClassName('gallery'),
+			slideImg : document.getElementsByClassName('gmask'),
+			btnRound : document.getElementsByClassName('btn-round'),
+		};
+
+		var slidePic = (function () {
+			var slide_img = i.slideImg[0],
+				slideLi = slide_img.getElementsByTagName('li'),
+				picWidth = slideLi[0].offsetWidth,
+				len = slideLi.length,
+				btnA = i.btnRound[0].getElementsByTagName("a");
+
+			return{
+				_showBtn : function (index) {
+					for(var i = 0; i < btnA.length; i ++ ) {
+						btnA[i].className = "";
+					}
+						btnA[index].className = "active";
+				},
+				_next : function () {
+					i.btnNext[0].onclick = function () {
+						if(parseInt(slide_img.style.left) > -(len-1)*picWidth){
+							slide_img.style.left = parseInt(slide_img.style.left) - picWidth + 'px';
+							index = -parseInt(slide_img.style.left)/picWidth;
+						}else{
+							slide_img.style.left = 0;
+							index = 0;
+						}
+						slidePic._showBtn(index);
+					}
+				},
+				_prev : function () {
+					i.btnPrev[0].onclick = function () {
+						if(parseInt(slide_img.style.left) < 0 ){
+							slide_img.style.left = parseInt(slide_img.style.left) + picWidth + 'px';
+							index = -parseInt(slide_img.style.left)/picWidth;
+						}else{
+							slide_img.style.left = -(len-1)*picWidth + 'px';
+							index = btnA.length - 1;
+						}
+						slidePic._showBtn(index);
+					}
+				},
+				_showBtnClick : function () {
+					for (var i = 0; i < btnA.length; i ++ ) {
+						btnA[i].className = "";
+						btnA[i].onclick = function () {
+							slide_img.style.left = -picWidth * (i - 1) + 0 + 'px';
+							alert(picWidth);
+							alert(slide_img.style.left);
+						}
+					slidePic._showBtn(i);
+					}
+				}
+			}
+		})();
+		slidePic._next();
+		slidePic._prev();
+		slidePic._showBtnClick();
+
+
+		// alert(index[0].offsetHeight);
+		//info.style.height = lee_screen.winWidth();
+
+
+		
+	}
+	</script>
+</head>
+<body>
+	<div class="info index">
+		<div class="header">
+			<a class="logo" href="#">eBay</a>
+			<span>A NEW WAY TO SHOP</span>
+			<div class="content">
+				<div class="content_text">
+					<h2>Create A Feed On Your Homepage</h2>
+					<article class="text">
+						<ul>
+							<li>Add your favorite interests, brands and trends</li>
+							<li>Get inspired by fresh new items</li>
+							<li>See new discoveries each time you visit</li>
+							<li>Edit and update your feed anytime</li>
+						</ul>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="box box-1">
+		<div class="box-shadow"></div>
+	</div>	
+	<div id="slideshow" class="info">
+		<h1>PERSONALIZE YOUR EBAY<br>SHOPPING EXPERIENCE</h1>
+		<div class="gallery">
+			<a class="btn-prev" href="javascript:;">prev</a>
+			<a class="btn-next" href="javascript:;">next</a>
+			<div class="gmask" style="left : 0">
+				<ul>
+					<li><img src="images/gallery/imgGalleryVid2.jpg" alt="" /></li>
+					<li><img src="images/gallery/imgGalleryVid3.jpg" alt="" /></li>
+					<li><img src="images/gallery/imgGalleryVid4.jpg" alt="" /></li>
+					<li><img src="images/gallery/imgGalleryVid2.jpg" alt="" /></li>
+				</ul>
+			</div>
+			<div class="btn-round">
+				<span><a href="javascript:;" class="active">1</a></span>
+				<span><a href="javascript:;">2</a></span>
+				<span><a href="javascript:;">3</a></span>
+				<span><a href="javascript:;">4</a></span>
+			</div>
+		</div>
+	</div>
+	<div class="box box-2">
+		<div class="box-shadow"></div>
+	</div>
+	<div class="info">
+		
+	</div>
+	<div class="box box-3">
+		<div class="box-shadow"></div>
+	</div>
+	<div class="info footer">
+		<div class="start" style="height: 657px;">
+			<div class="light-wrap">
+				<div class="light1"></div>
+				<div class="light2"></div>
+				<div class="light3"></div>
+				<div class="light-focus">
+					<div class="light-focus-inner flipOutY">
+						<span class="goods-num">11</span>
+					</div>
+				</div>
+			</div>
+			<div class=""></div>
+			<div class=""></div>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+		$(function () {
+			var l ={
+				lightFocus : $('.light-focus'),
+				lightFocusInner : $('.light-focus-inner'),
+				goodsNum : $('goods-num'),
+
+				init : function() {
+					var n = this;
+
+					n._action()
+				},
+
+				_action : function() {
+					var t = this;
+					return t.lightFocus.hover(
+						function () {
+						    t.lightFocusInner.removeClass('flipOutY').addClass('light-focus-hover flipInY')
+					    }, function () {
+						    t.lightFocusInner.removeClass('light-focus-hover flipInY').addClass('flipOutY')
+						})
+				}
+			};
+			l.init();
+		})
+	</script>	
+</body>
+</html>
